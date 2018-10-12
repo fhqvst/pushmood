@@ -116,7 +116,7 @@ class QuestionsPage extends Component {
           </Block>
           <Block marginTop="2em">
             <Heading as="h2">All Questions</Heading>
-            { (questions.length > 1) && (<QuestionList questions={questions} onEdit={this.handleEdit} onDelete={this.handleDelete} />) }
+            { (questions.length > 0) && (<QuestionList questions={questions} onEdit={this.handleEdit} onDelete={this.handleDelete} />) }
             { (!questions.length) && (<Paragraph>You have not created any questions yet.</Paragraph>) }
           </Block>
         </Grid>
