@@ -29,15 +29,15 @@ exports.question = functions.https.onRequest(async (request, response) => {
 exports.answer = functions.https.onRequest(async (request, response) => {
   const body = request.body.trim(); 
 
-  if (body === '') {
-    return response.end('');
-  }
-
   const parts = body.split(' ');
   const userId = parts[0];
   const questionId = parts[1];
 
-  let text = parts.slice(2).join(' ');
+  let text = parts.slice(2).join(' ').trim();
+
+  if (text === '') {
+    return response.end('');
+  }
 
   const question = await admin.firestore().collection('questions').doc(questionId).get();
 
