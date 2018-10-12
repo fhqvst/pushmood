@@ -13,7 +13,7 @@ The application is built using React and Firebase.
 1. Sign in at [pushmood.com](https://pushmood.com/signin) (GitHub sign-in is supported).
 2. Create a new question.
 3. Install the hook in a repository of your choice using the instructions at [pushmood.com/install](https://pushmood.com/install).
-4. Try it out: `git commit --allow-empty -m "Testing Pushmood && git push"
+4. Try it out: `git commit --allow-empty -m "Testing Pushmood" && git push`
 5. Check out your answer at [pushmood.com/answers](https://pushmood.com/answers).
 
 ## Installation
