@@ -14,7 +14,20 @@ firestore.settings({
 const GIST_URL = 'https://api.github.com/gists/19d5c54cd2632c0642375f9ef5ce935b';
 
 exports.question = functions.https.onRequest(async (request, response) => {
-  const questions = await admin.firestore().collection('questions').get()
+  if (!request.body.trim) {
+		return response.end('');
+	}
+
+  const body = request.body.trim(); 
+
+  const parts = body.split(' ');
+  const userId = parts[0];
+
+  if (!userId) {
+    return response.end('');
+  }
+
+  const questions = await admin.firestore().collection('questions').where('userId', '==', userId).get()
   if (!questions.size) {
     return response.end('');
   }
@@ -27,6 +40,10 @@ exports.question = functions.https.onRequest(async (request, response) => {
 });
 
 exports.answer = functions.https.onRequest(async (request, response) => {
+  if (!request.body.trim) {
+		return response.end('');
+	}
+
   const body = request.body.trim(); 
 
   const parts = body.split(' ');
